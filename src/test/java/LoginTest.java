@@ -1,3 +1,5 @@
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -9,12 +11,13 @@ import static org.testng.Assert.assertEquals;
 
 public class LoginTest {
 
-    Driver driver = null;
+    WebDriver driver = null;
 
     // выполниться прежде чем методы с аннотацией @Test
     @BeforeTest
     public void setUp() {
-        driver = new ChromeDriver(); // выбираем с каким браузером запуститься всем тестам в этом класса
+        System.setProperty("webdriver.gecko.driver", "/Users/macbook/Downloads/fakeUITest/geckodriver-18.0");
+        driver = new FirefoxDriver(); // выбираем с каким браузером запуститься всем тестам в этом класса
     }
 
     // отделяем обычный метод в Java от метода, которые будет содержать проверки
@@ -22,28 +25,22 @@ public class LoginTest {
     // от методов, которые будут отображать результат прохождения тестов
     @Test
     public void successfulLoginTest() {
-        driver.get("http://google.com"); // переходим на наш сайт
-        driver.findElement("Search field"); // пробуем найти элемент
-        String title = driver.getTitle(); // узнаем название страницы что бы убедиться что мы именно там где ожидали быть
-        String expectedTitle = "Title of the page";
+        driver.navigate().to("http://google.com"); // переходим на сайт
+        String appTitle = driver.getTitle();
+        System.out.println("Application title is :: " + appTitle);
 
-        assertEquals(title, expectedTitle); // с помощью библиотеки TestNG выполняем сравнение занчений.
+        String expectedTitle = "Google";
+
+        assertEquals(appTitle, expectedTitle); // с помощью библиотеки TestNG выполняем сравнение занчений.
         // Если значения совпадут, то тесты буду зелеными
         // Если значения не совпадут, то тесты буду красными/оранжевыми
 
-        driver.quit(); // закрываем браузер
+        driver.close();// закрываем окно браузера
     }
 
     @Test
     public void failedTest() {
-        driver.get("http://google.com");
-        driver.findElement("Search field");
-        String title = driver.getTitle();
-        String expectedTitle = "Facebook.com";
 
-        assertEquals(title, expectedTitle);
-
-        driver.quit();
     }
 
 }
