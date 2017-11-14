@@ -16,7 +16,7 @@ public class LoginTest {
     // выполниться прежде чем методы с аннотацией @Test
     @BeforeTest
     public void setUp() {
-        System.setProperty("webdriver.gecko.driver", "/Users/macbook/Downloads/fakeUITest/geckodriver-18.0");
+        System.setProperty("webdriver.gecko.driver", "/Users/macbook/Downloads/fakeUITest/drivers/geckodriver-18.0");
         driver = new FirefoxDriver(); // выбираем с каким браузером запуститься всем тестам в этом класса
     }
 

@@ -9,9 +9,12 @@ import static org.testng.Assert.assertEquals;
 
 public class SampleTest {
 
+    // обозначает, что метод нужно запустить особым образом
+    // результат запуска записать в отчет с помощью библиотеки TestNG
     @Test
     public void successfulTest() {
-        assertEquals(1, 1);
+        assertEquals(1, 1); // проверка, что ожидаемое значение соответствует тому,
+                                            // что пришло от сервера в UI или BE
     }
 
     @Test
