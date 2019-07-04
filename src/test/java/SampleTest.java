@@ -1,9 +1,7 @@
 import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
 
-/**
- * Created by macbook on 11/14/17.
- */
+
 
 // пример теста в самом простом варианте
 

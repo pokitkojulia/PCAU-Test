@@ -1,13 +1,19 @@
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.assertEquals;
 
-/**
- * Created by macbook on 11/14/17.
- */
+
 
 public class LoginTest {
 
@@ -16,27 +22,58 @@ public class LoginTest {
     // выполниться прежде чем методы с аннотацией @Test
     @BeforeTest
     public void setUp() {
-        System.setProperty("webdriver.gecko.driver", "/Users/macbook/Downloads/fakeUITest/drivers/geckodriver-18.0");
-        driver = new FirefoxDriver(); // выбираем с каким браузером запуститься всем тестам в этом класса
+        System.setProperty("webdriver.gecko.driver", "D:/fakeUITest/chromedriver.exe");
+        driver = new ChromeDriver();
     }
 
     // отделяем обычный метод в Java от метода, которые будет содержать проверки
     // так же помогает библиотеке формировать отчеты отделя методы, которые просто выполнились
     // от методов, которые будут отображать результат прохождения тестов
     @Test
-    public void successfulLoginTest() {
-        driver.navigate().to("http://google.com"); // переходим на сайт
+    public void successfulLoginTest() throws InterruptedException {
+        driver.navigate().to("http://broker.pcau.qa.cpart.co.il/home"); // переходим на сайт
         String appTitle = driver.getTitle();
         System.out.println("Application title is :: " + appTitle);
 
-        String expectedTitle = "Google";
+        String expectedTitle = "TravelCard Agency";
 
         assertEquals(appTitle, expectedTitle); // с помощью библиотеки TestNG выполняем сравнение занчений.
-        // Если значения совпадут, то тесты буду зелеными
-        // Если значения не совпадут, то тесты буду красными/оранжевыми
 
-        driver.close();// закрываем окно браузера
+
+        driver.findElement(By.id("mat-input-0")).sendKeys("zoyam@passportcard.com");
+        driver.findElement(By.id("mat-input-1")).sendKeys("ABCabc123");
+        driver.findElement(By.className("mat-button-wrapper")).click();
+        openTab();
+
     }
+
+    public void openTab() {
+        WebElement openTab = (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/app-root/ng-component/app-header/mat-toolbar/nav/div/a[4]")));
+        openTab.click();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+        WebElement quotesSelection = (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/app-root/ng-component/div/app-quotes/mat-table/mat-row[1]/mat-cell[8]/button/span/mat-icon")));
+        quotesSelection.click();
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+        WebElement editQuote = (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[text()='Edit Quote']")));
+        editQuote.click();
+
+//            new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[4]/div[2]/div/div/button[4]/span"))).click();
+
+//        cloneQuote.click();
+//        Select drpIssue = new Select(driver.findElement(By.xpath("/html/body/app-root/ng-component/div/app-quotes/mat-table/mat-row[1]/mat-cell[8]/button/span")));
+//        drpIssue.selectByValue("View Quote");
+    }
+
+
+
+        //driver.close();// закрываем окно браузера
+
 
     @Test
     public void failedTest() {
