@@ -53,15 +53,15 @@ public class LoginTest {
         openTab.click();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-        WebElement quotesSelection = (new WebDriverWait(driver, 10))
+        WebElement newQuotes = (new WebDriverWait(driver, 10))
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/app-root/ng-component/div/app-quotes/mat-table/mat-row[1]/mat-cell[8]/button/span/mat-icon")));
-        quotesSelection.click();
+        newQuotes.click();
 
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
-        WebElement editQuote = (new WebDriverWait(driver, 10))
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[text()='Edit Quote']")));
-        editQuote.click();
+//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//
+//        WebElement editQuote = (new WebDriverWait(driver, 10))
+//                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[span='Edit Quote']")));
+//        editQuote.click();
 
 //            new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[4]/div[2]/div/div/button[4]/span"))).click();
 
