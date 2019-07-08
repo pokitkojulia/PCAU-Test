@@ -47,44 +47,34 @@ public class LoginTest {
         driver.findElement(By.id("mat-input-1")).sendKeys("ABCabc123");
         driver.findElement(By.className("mat-button-wrapper")).click();
         openTab();
+        filterButton();
 
     }
 
     public void openTab() {
-        WebElement openTab = (new WebDriverWait(driver, 10))
+        WebElement openClientsTab = (new WebDriverWait(driver, 10))
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/app-root/ng-component/app-header/mat-toolbar/nav/div/a[4]")));
-        openTab.click();
-        (new WebDriverWait(driver, 10))
-                .until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//mat-progress-bar[contains(@class, 'table-progress-bar')][0]")));
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
+        openClientsTab.click();
 
         WebElement newQuotes = (new WebDriverWait(driver, 10))
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[contains(@class, 'control-btn mat-raised-button mat-primary')][1]")));
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@class='control-btn mat-raised-button mat-primary'][.//span[contains(text(), 'New')]]")));
         newQuotes.click();
 
-//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//
-//        WebElement editQuote = (new WebDriverWait(driver, 10))
-//                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[span='Edit Quote']")));
-//        editQuote.click();
-
-//            new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[4]/div[2]/div/div/button[4]/span"))).click();
-
-//        cloneQuote.click();
-//        Select drpIssue = new Select(driver.findElement(By.xpath("/html/body/app-root/ng-component/div/app-quotes/mat-table/mat-row[1]/mat-cell[8]/button/span")));
-//        drpIssue.selectByValue("View Quote");
     }
-
-
 
         //driver.close();// закрываем окно браузера
 
 
     @Test
-    public void failedTest() {
+    public void filterButton() {
+        WebElement openClientsTab = (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/app-root/ng-component/app-header/mat-toolbar/nav/div/a[4]")));
+        openClientsTab.click();
+
+        WebElement filter1 = (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@class='control-btn mat-raised-button mat-primary'][.//span[contains(text(), 'Filter')]]")));
+        filter1.click();
+
 
     }
 
