@@ -1,6 +1,7 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -24,6 +25,8 @@ public class LoginTest {
     public void setUp() {
         System.setProperty("webdriver.gecko.driver", "D:/fakeUITest/chromedriver.exe");
         driver = new ChromeDriver();
+        driver.manage().window().fullscreen();
+
     }
 
     // отделяем обычный метод в Java от метода, которые будет содержать проверки
@@ -51,10 +54,15 @@ public class LoginTest {
         WebElement openTab = (new WebDriverWait(driver, 10))
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/app-root/ng-component/app-header/mat-toolbar/nav/div/a[4]")));
         openTab.click();
+        (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//mat-progress-bar[contains(@class, 'table-progress-bar')][0]")));
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
+
         WebElement newQuotes = (new WebDriverWait(driver, 10))
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/app-root/ng-component/div/app-quotes/mat-table/mat-row[1]/mat-cell[8]/button/span/mat-icon")));
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[contains(@class, 'control-btn mat-raised-button mat-primary')][1]")));
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
         newQuotes.click();
 
 //        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
