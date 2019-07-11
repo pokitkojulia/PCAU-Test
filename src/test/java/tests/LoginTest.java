@@ -20,7 +20,7 @@ public class LoginTest {
 
     @BeforeTest
     public void setUp(){
-        System.setProperty("webdriver.gecko.driver", "D:/fakeUITest/chromedriver.exe");
+        System.setProperty("webdriver.gecko.driver", "C:\\Users\\Olga\\Desktop\\PCAU-Test\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().fullscreen();
 
@@ -35,10 +35,10 @@ public class LoginTest {
         String expectedTitle = "TravelCard Agency";
         assertEquals(appTitle, expectedTitle);
 
-        LoginPage loginPage = new LoginPage();
-       loginPage.enterLoginEmail();
-       loginPage.enterPassword();
-       loginPage.clickLogin();
+        LoginPage loginPage1 = new LoginPage();
+        loginPage1.enterLoginEmail();
+        loginPage1.enterPassword();
+        loginPage1.clickLogin();
 
     }
 }

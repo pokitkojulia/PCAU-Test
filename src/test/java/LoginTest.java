@@ -1,3 +1,4 @@
+import pages.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,18 +22,27 @@ public class LoginTest {
     WebDriver driver = null;
 
     // выполниться прежде чем методы с аннотацией @Test
-    @BeforeTest
+   /* @BeforeTest
     public void setUp() {
-        System.setProperty("webdriver.gecko.driver", "D:/fakeUITest/chromedriver.exe");
+        System.setProperty("webdriver.gecko.driver", "C:\\Users\\Olga\\Desktop\\PCAU-Test\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().fullscreen();
 
+    }
+*/
+    @Test
+    public void LoginTest() {
+        LoginPage LoginPage1 = new LoginPage();
+        LoginPage1.setupTest();
+        LoginPage1.enterLoginEmail();
+        LoginPage1.enterPassword();
+        LoginPage1.clickLogin();
     }
 
     // отделяем обычный метод в Java от метода, которые будет содержать проверки
     // так же помогает библиотеке формировать отчеты отделя методы, которые просто выполнились
     // от методов, которые будут отображать результат прохождения тестов
-    @Test
+    /*@Test
     public void successfulLoginTest() throws InterruptedException {
         driver.navigate().to("http://broker.pcau.qa.cpart.co.il/home"); // переходим на сайт
         String appTitle = driver.getTitle();
@@ -47,7 +57,7 @@ public class LoginTest {
         driver.findElement(By.id("mat-input-1")).sendKeys("ABCabc123");
         driver.findElement(By.className("mat-button-wrapper")).click();
         openTab();
-        filterButton();
+        //filterButton();
 
     }
 
@@ -77,5 +87,6 @@ public class LoginTest {
 
 
     }
+*/
 
 }
