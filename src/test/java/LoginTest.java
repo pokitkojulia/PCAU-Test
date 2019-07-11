@@ -29,6 +29,7 @@ public class LoginTest {
 
     }
 
+
     // отделяем обычный метод в Java от метода, которые будет содержать проверки
     // так же помогает библиотеке формировать отчеты отделя методы, которые просто выполнились
     // от методов, которые будут отображать результат прохождения тестов
@@ -47,7 +48,7 @@ public class LoginTest {
         driver.findElement(By.id("mat-input-1")).sendKeys("ABCabc123");
         driver.findElement(By.className("mat-button-wrapper")).click();
         openTab();
-        filterButton();
+        //filterButton();
 
     }
 
@@ -65,17 +66,9 @@ public class LoginTest {
         //driver.close();// закрываем окно браузера
 
 
-    @Test
-    public void filterButton() {
-        WebElement openClientsTab = (new WebDriverWait(driver, 10))
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/app-root/ng-component/app-header/mat-toolbar/nav/div/a[4]")));
-        openClientsTab.click();
 
-        WebElement filter1 = (new WebDriverWait(driver, 10))
-                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@class='control-btn mat-raised-button mat-primary'][.//span[contains(text(), 'Filter')]]")));
-        filter1.click();
 
 
     }
 
-}
+

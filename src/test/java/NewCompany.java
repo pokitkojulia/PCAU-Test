@@ -5,7 +5,7 @@ import static org.testng.Assert.assertEquals;
 
 // пример теста в самом простом варианте
 
-public class SampleTest {
+public class NewCompany {
 
     // обозначает, что метод нужно запустить особым образом
     // результат запуска записать в отчет с помощью библиотеки TestNG
