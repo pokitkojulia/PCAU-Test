@@ -33,7 +33,7 @@ public class CorporateQuotes {
         return this;
     }
 
-    public CorporateQuotes FilterByStatus() {
+    public CorporateQuotes FilterByStatus() throws InterruptedException {
 
         WebElement Filter = (new WebDriverWait(driver, 10))
                 .until(ExpectedConditions.visibilityOfElementLocated(By.id("mat-button-toggle-0")));
@@ -51,7 +51,7 @@ public class CorporateQuotes {
                 .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"cdk-accordion-child-1\"]/div/div/button[2]")));
         Search.click();
 
-        //driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        Thread.sleep(15000);
 
         return this;
     }
