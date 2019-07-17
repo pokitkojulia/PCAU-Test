@@ -30,6 +30,10 @@ public class CorporateQuotes {
         WebElement openQuotesTab = (new WebDriverWait(driver, 10))
                 .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/app-root/ng-component/app-header/mat-toolbar/nav/div/a[4]")));
         openQuotesTab.click();
+        return this;
+    }
+
+    public CorporateQuotes FilterByStatus() {
 
         WebElement Filter = (new WebDriverWait(driver, 10))
                 .until(ExpectedConditions.visibilityOfElementLocated(By.id("mat-button-toggle-0")));
@@ -47,18 +51,33 @@ public class CorporateQuotes {
                 .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"cdk-accordion-child-1\"]/div/div/button[2]")));
         Search.click();
 
-        WebElement Filter1 = (new WebDriverWait(driver, 60))
-                .until(ExpectedConditions.visibilityOfElementLocated(By.id("mat-button-toggle-0")));
+        //driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+
+        return this;
+    }
+
+        public CorporateQuotes FilterByCompanyName() {
+
+
+        //driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
+
+        WebElement Filter1 = (new WebDriverWait(driver, 10))
+               .until(ExpectedConditions.elementToBeClickable(By.id("mat-button-toggle-0")));
         Filter1.click();
 
-        WebElement Clear = (new WebDriverWait(driver, 20))
+
+        WebElement Clear = (new WebDriverWait(driver, 10))
                 .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"cdk-accordion-child-1\"]/div/div/button[1]")));
         Clear.click();
 
-        WebElement CompanyName = (new WebDriverWait(driver, 20))
-                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"cdk-accordion-child-1\"]/div/div/button[2]")));
+        WebElement CompanyName = (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"mat-input-3\"]")));
         CompanyName.click();
         CompanyName.sendKeys("TestOlga");
+
+        WebElement Search1 = (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"cdk-accordion-child-1\"]/div/div/button[2]")));
+        Search1.click();
 
         return this;
 
