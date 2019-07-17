@@ -1,4 +1,5 @@
 package pages;
+import pages.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -6,32 +7,18 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import utils.RemoteDriverManager;
 
 public class LoginPage {
-    static WebDriver driver = null;
+    private WebDriver driver;
     private String URL = "http://broker.pcau.qa.cpart.co.il/home";
     String loginEmail_id = "mat-input-0";
     static String loginPassword_id = "mat-input-1";
     static String loginbtn_id = "mat-button-wrapper";
-    static String welcomeText = "/html/body/app-root/ng-component/div/app-home/div/mat-card/h1";
 
-    @BeforeMethod
-    public void setupTest (){
-        driver = new ChromeDriver();
 
-        driver.navigate().to(URL);
-    }
-
-    /*@Test
-    public void firstTest () {
-        enterLoginEmail();
-        enterPassword();
-        clickLogin();
-    }
-*/
-    @AfterMethod
-    public void teardownTest (){
-        //driver.quit();
+    public LoginPage(WebDriver driver) {
+        this.driver = driver;
     }
 
     public LoginPage enterLoginEmail() {
