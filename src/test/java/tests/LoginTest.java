@@ -46,11 +46,11 @@ public class LoginTest {
 
 
     @Test(priority = 2)
-    public void CorporateQuotesByStatus() {
+    public void CorporateQuotesByStatus() throws InterruptedException {
         CorporateQuotes NewTab = new CorporateQuotes(driver);
         NewTab.openTab();
         NewTab.FilterByStatus();
-        //NewTab.FilterByCompanyName();
+        NewTab.FilterByCompanyName();
     }
 
   //  @Test (priority = 3)
