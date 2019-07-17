@@ -46,10 +46,18 @@ public class LoginTest {
 
 
     @Test(priority = 2)
-    public void CorporateQuotesTest() {
+    public void CorporateQuotesByStatus() {
         CorporateQuotes NewTab = new CorporateQuotes(driver);
         NewTab.openTab();
+        NewTab.FilterByStatus();
+        //NewTab.FilterByCompanyName();
     }
+
+  //  @Test (priority = 3)
+  //  public void CorporateQuotesByName () {
+  //      CorporateQuotes NewTab = new CorporateQuotes(driver);
+  //      NewTab.FilterByCompanyName();
+  //  }
 
 }
 
