@@ -1,4 +1,4 @@
-package pages;
+package tests;
 import org.testng.annotations.BeforeMethod;
 import pages.*;
 import org.openqa.selenium.By;
