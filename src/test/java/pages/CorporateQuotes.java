@@ -40,7 +40,7 @@ public class CorporateQuotes {
         Filter.click();
 
         WebElement Status = (new WebDriverWait(driver, 10))
-                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"cdk-accordion-child-1\"]/div/div/app-dynamic-form/form/mat-form-field[7]")));
+                .until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"cdk-accordion-child-1\"]/div/div/app-dynamic-form/form/mat-form-field[7]")));
         Status.click();
 
         WebElement ActionRequired = (new WebDriverWait(driver, 10))
@@ -71,7 +71,7 @@ public class CorporateQuotes {
         Clear.click();
 
         WebElement CompanyName = (new WebDriverWait(driver, 10))
-                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"mat-input-3\"]")));
+                .until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"mat-input-3\"]")));
         CompanyName.click();
         CompanyName.sendKeys("TestOlga");
 

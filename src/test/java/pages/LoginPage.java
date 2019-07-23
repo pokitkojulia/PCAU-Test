@@ -14,8 +14,8 @@ public class LoginPage {
     static String loginbtn_id = "mat-button-wrapper";
     static String welcomeText = "/html/body/app-root/ng-component/div/app-home/div/mat-card/h1";
 
-    public LoginPage() {
-        this.driver = RemoteDriverManager.getDriver();
+    public LoginPage(WebDriver driver) {
+        this.driver = driver;
     }
 
     public LoginPage enterLoginEmail() {

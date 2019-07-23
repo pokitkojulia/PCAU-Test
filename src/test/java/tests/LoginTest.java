@@ -30,6 +30,8 @@ public class LoginTest {
         this.driver = new ChromeDriver();
 
         driver.navigate().to(URL);
+        driver.manage().window().maximize();
+
     }
 
 
@@ -49,7 +51,9 @@ public class LoginTest {
     public void CorporateQuotesByStatus() throws InterruptedException {
         CorporateQuotes NewTab = new CorporateQuotes(driver);
         NewTab.openTab();
+        Thread.sleep(3000);
         NewTab.FilterByStatus();
+        Thread.sleep(3000);
         NewTab.FilterByCompanyName();
     }
 
